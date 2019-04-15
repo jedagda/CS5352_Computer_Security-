@@ -1,4 +1,4 @@
-/* stack.c */
+/* Dagda_VulnCode.c */
 
 /* This program has a buffer overflow vulnerability. */
 /* Our task is to exploit this vulnerability */
@@ -12,8 +12,6 @@ int bof(char *str)
 
     /* The following statement has a buffer overflow problem */ 
     strcpy(buffer, str);
-    /*find address of buffer */
-   // printf("buffer: 0x%x\n", buffer);
 
     return 1;
 }
